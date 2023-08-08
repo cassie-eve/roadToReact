@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 const App = () => {
+  console.log('Rendering App...');
   const stories = [
     {
       title: 'React',
@@ -34,6 +35,7 @@ const App = () => {
 }
 
 const List = (props) => {
+  console.log('Rendering List...');
   return (
     <ul>
       {props.list.map((item) => (
@@ -44,6 +46,7 @@ const List = (props) => {
 }
 
 const Item = (props) => {
+  console.log('Rendering Item...');
   return (
     <li>
       <span>
@@ -57,14 +60,16 @@ const Item = (props) => {
 }
 
 const Search = () => {
+  console.log('Rendering Search...');
+  const [searchTerm, setSearchTerm] = React.useState('...');
   const handleChange = (event) => {
-    console.log(event)
-    console.log(event.target.value)
+    setSearchTerm(event.target.value);
   };
   return (
     <div>
       <label htmlFor="search">Search: </label>
       <input type="text" id="search" onChange={handleChange}/>
+      <p>Searching for <strong>{searchTerm}</strong></p>
     </div>
   );
 }
