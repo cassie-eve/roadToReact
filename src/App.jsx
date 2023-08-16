@@ -44,30 +44,31 @@ const App = () => {
   );
 }
 
-const List = ({list}) => {
-  console.log('Rendering List...');
-  return (
-    <ul>
-      {list.map((item) => (
-        <Item key={item.objectID} item={item}/>
-      ))}
-    </ul>
-  );
-}
+const List = ({list}) => (
+  <ul>
+    {list.map((item) => (
+      <Item 
+        key={item.objectID} 
+        title={item.title}
+        url={item.url}
+        author={item.author}
+        num_comments={item.num_comments}
+        points={item.points}
+      />
+    ))}
+  </ul>
+);
 
-const Item = ({item}) => {
-  console.log('Rendering Item...');
-  return (
-    <li>
-      <span>
-        <a href={item.url}>{item.title}</a>
-      </span>
-      <span>{item.author}</span>
-      <span>{item.num_comments}</span>
-      <span>{item.points}</span>
-    </li>
-  );
-}
+const Item = ({ title, url, author, num_comments, points }) => (
+  <li>
+    <span>
+      <a href={url}>{title}</a>
+    </span>
+    <span>{author}</span>
+    <span>{num_comments}</span>
+    <span>{points}</span>
+  </li>
+);
 
 const Search = ({search, onSearch}) => {
 
